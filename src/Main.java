@@ -29,4 +29,13 @@ public class Main {
         }
         return parsedArgs;
     }
+
+    /**
+     * Strips the parentheses from the argument
+     * @param arg The argument to strip
+     * @return The argument without parenthesis
+     */
+    public static String stripParenthesis(String arg) {
+        return arg.substring(1, arg.length() - 1);
+    }
 }
