@@ -1,3 +1,5 @@
+import common.Location;
+import common.Map;
 import obstacles.Guard;
 import obstacles.Obstacle;
 import obstacles.ObstacleType;
@@ -7,9 +9,22 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
+        // Parse the command line arguments into obstacles
+        // and create a map with those obstacles
         HashMap<String, ArrayList<String>> parsedArgs = parseArgs(args);
+        // System.out.println(parsedArgs);
 
-        System.out.println(parsedArgs);
+        ArrayList<Obstacle> obstacles = parseObstacles(parsedArgs);
+        Map map = new Map(obstacles);
+
+        // Parse the start and target locations
+        String startArg = stripParentheses(parsedArgs.get("-start").get(0));
+        String targetArg = stripParentheses(parsedArgs.get("-target").get(0));
+        Location start = Location.parse(startArg);
+        Location target = Location.parse(targetArg);
+
+        // Show the map
+        System.out.println(map.getSolvedMap(start, target));
 
     }
 
@@ -39,7 +54,7 @@ public class Main {
      * @param arg The argument to strip
      * @return The argument without parenthesis
      */
-    public static String stripParenthesis(String arg) {
+    public static String stripParentheses(String arg) {
         return arg.substring(1, arg.length() - 1);
     }
 
@@ -58,7 +73,7 @@ public class Main {
         }
         for(String arg : args) {
             // Remove the parenthesis from the argument
-            String cleanedArg = stripParenthesis(arg);
+            String cleanedArg = stripParentheses(arg);
             Obstacle obstacle = Guard.parse(cleanedArg);
             obstacles.add(obstacle);
         }
