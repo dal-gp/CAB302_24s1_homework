@@ -99,5 +99,15 @@ public class Map {
         // Convert the map to a string
         return matrixToString(solvedMap);
     }
+
+    /**
+     * Returns true if the given location is obstructed by an obstacle, and false otherwise.
+     * @param x The x coordinate of the location
+     * @param y The y coordinate of the location
+     * @return True if the given location is obstructed by an obstacle, and false otherwise
+     */
+    public boolean isLocationObstructed(int x, int y){
+        return getObstacleAtLocation(x, y) != null;
+    }
 }
 
