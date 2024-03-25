@@ -129,7 +129,7 @@ public class Map {
             minY = Math.min(minY, y);
         }
         topLeft = new Location(minX - PADDING, minY - PADDING);
-        bottomRight = new Location(maxX - PADDING, maxY + PADDING);
+        bottomRight = new Location(maxX + PADDING, maxY + PADDING);
 
         // Create the map
         // +1 because the bounds are inclusive

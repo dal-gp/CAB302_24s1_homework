@@ -46,10 +46,10 @@ public class BFSPathFinder implements GridPathFinder {
 
         // Backtrack from the end location to find the path
         List<Location> path = new Stack<>();
-        Location curr = endLocation;
-        while(previous.containsKey(curr)){
-            path.add(curr);
-            curr = previous.get(curr);
+        Location current = endLocation;
+        while(previous.containsKey(current)){
+            path.add(current);
+            current = previous.get(current);
         }
         path.add(startLocation);
         // Reverse the path so that it goes from the start location to the end location

@@ -102,6 +102,6 @@ public class Path implements Iterable<Location> {
 
     @Override
     public Iterator<Location> iterator() {
-        return null;
+        return inner.iterator();
     }
 }
